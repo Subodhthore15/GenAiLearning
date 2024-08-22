@@ -1,0 +1,28 @@
+GROQ models
+-----------------------------------------
+Meta Llama 3 70B
+Model ID: llama3-70b-8192
+
+==============================
+Meta Llama 3 8B
+Model ID: llama3-8b-8192
+
+=============================
+
+Llama Guard 3 8B
+Model ID: llama-guard-3-8b
+
+=============================
+
+
+Gemma 7B
+Model ID: gemma-7b-it
+Developer: Google
+
+=============================
+
+Gemma 2 9B
+Model ID: gemma2-9b-it
+Developer: Google
+
+=============================
