@@ -17,3 +17,6 @@ uvicorn
 langserve
 sse_starlette
 torch
+arxiv 
+wikipedia
+duckduckgo-search

@@ -99,7 +99,7 @@ if uploadedPDFs:
         ]
     )
 
-    que_ans_chain = create_stuff_documents_chain(llm, qa_prompt)
+    que_ans_chain = create_stuff_documents_chain(llm, qa_prompt) # responible for generating response
     rag_chain = create_retrieval_chain(history_awareRetriever, que_ans_chain)
 
     

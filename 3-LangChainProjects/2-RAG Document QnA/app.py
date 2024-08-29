@@ -60,7 +60,7 @@ if userInput:
                                             search_type = "similarity",
                                             search_kwargs={"k":1})
 
-    # 1] from vector db get contextual info and set as a context
+    # 1] from vector db get contextual info and set as a context var
     ragChain = create_retrieval_chain(retriever, documentChain)
 
     response=ragChain.invoke({"input":userInput})
