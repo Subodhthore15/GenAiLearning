@@ -5,10 +5,13 @@ from langchain_community.tools import DuckDuckGoSearchRun, ArxivQueryRun, Wikipe
 from langchain.callbacks import StreamlitCallbackHandler # tools can communicate within themselves
 from langchain.agents.initialize import initialize_agent
 from langchain.agents.agent_types import AgentType
+from langchain_community.tools.google_finance import GoogleFinanceQueryRun
+from langchain_community.utilities.google_finance import GoogleFinanceAPIWrapper
 import os 
 from dotenv import load_dotenv
 load_dotenv()
 os.environ['GROQ_API_KEY'] = os.getenv("GROQ_API_KEY")
+os.environ["SERPAPI_API_KEY"] = os.getenv("SERPAPI_API_KEY")
 
 # Wikipedia wrapper
 api_wrapper_wiki = WikipediaAPIWrapper(top_k_results=1,doc_content_chars_max=250) # will use wikipedia api to conduct searches and fetch page summaries
@@ -17,11 +20,14 @@ toolWiki = WikipediaQueryRun(api_wrapper=api_wrapper_wiki)
 api_wrapper_arxiv = ArxivAPIWrapper(top_k_results=1,doc_content_chars_max=250) 
 toolArxiv = ArxivQueryRun(api_wrapper=api_wrapper_arxiv)
 
+toolGoogleFinance = GoogleFinanceQueryRun(api_wrapper=GoogleFinanceAPIWrapper(), name="Google search")
+
+
 search = DuckDuckGoSearchRun(name="DuckDuckGo Search") # search from internet
 
 
 st.title("Search Engine")
-st.sidebar.title("Settings")
+
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role":"assistant", 
@@ -44,7 +50,7 @@ if user_prompt:
     llm = ChatGroq(model="Llama3-8b-8192",streaming=True)
 
     # initialize all the tools
-    tools = [toolWiki, toolArxiv, search]
+    tools = [toolGoogleFinance,toolWiki, toolArxiv, search]
 
     # agents
     agents = initialize_agent(tools=tools, llm = llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,

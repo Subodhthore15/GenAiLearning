@@ -20,3 +20,8 @@ torch
 arxiv 
 wikipedia
 duckduckgo-search
+google-search-results
+validators
+youtube_transcript_api
+pytube
+unstructured
