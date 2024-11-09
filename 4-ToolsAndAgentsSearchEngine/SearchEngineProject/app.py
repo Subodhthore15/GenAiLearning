@@ -49,7 +49,7 @@ if user_prompt:
     ## LLM model
     llm = ChatGroq(model="Llama3-8b-8192",streaming=True)
 
-    # initialize all the tools
+    # initialize all the tools 
     tools = [toolGoogleFinance,toolWiki, toolArxiv, search]
 
     # agents

@@ -23,7 +23,7 @@ prompt = ChatPromptTemplate.from_messages([
         ("user","{que}")
     ]
 )
-
+ 
 
 def generateResponse(question, model, temp, max_token):
     os.environ['GROQ_API_KEY'] = os.getenv("GROQ_API_KEY")
